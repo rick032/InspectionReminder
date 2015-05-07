@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -22,7 +24,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -33,12 +35,31 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public String user(Locale locale, Model model) {
 	 logger.info("Welcome home! The client locale is {}.", locale);
 	 return "user";
+	}
+	
+	@RequestMapping(value = {"/","/login"}, method = RequestMethod.GET)
+	public ModelAndView login(
+		@RequestParam(value = "error", required = false) String error,
+		@RequestParam(value = "logout", required = false) String logout) {
+ 
+		ModelAndView model = new ModelAndView();
+		if (error != null) {
+			model.addObject("error", "Invalid username and password!");
+		}
+ 
+		if (logout != null) {
+			model.addObject("msg", "You've been logged out successfully.");
+		}
+		model.setViewName("login");
+ 
+		return model;
+ 
 	}
 }
