@@ -48,20 +48,25 @@ body {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
+
 </style>
 </head>
 <body>
-	<c:if test="${param.error != null}">
-        <h2>Username or password wrong!</h2>
-    </c:if>
+    
 	<form class="form-signin" method="post" action="j_spring_security_check">
+		<c:if test="${not empty error}">
+			<h4 class="bg-danger">${error}</h4>
+		</c:if>
+		<c:if test="${not empty msg}">
+			<h4 class="bg-danger">${msg}</h4>
+		</c:if>
 		<h2 class="form-signin-heading">Please sign in</h2>
 		<label for="inputUserName" class="sr-only">User Name</label> <input
-			type="text" id="userName" name="userName" class="form-control"
+			type="text" id="j_userName" name="j_userName" class="form-control"
 			placeholder="User Name" required autofocus> 
 		<label
 			for="inputPassword" class="sr-only">Password</label> <input
-			type="password" id="password" name="password" class="form-control"
+			type="password" id="j_password" name="j_password" class="form-control"
 			placeholder="Password" required>		
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 			in</button>

@@ -10,8 +10,8 @@
 	<http auto-config="true">		
 		<intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" />		
 		<form-login login-page="/login" default-target-url="/index"
-			authentication-failure-url="/login?error" username-parameter="userName"
-			password-parameter="password" />
+			authentication-failure-url="/login?error" username-parameter="j_userName"
+			password-parameter="j_password" />
 		<intercept-url pattern="/**" access="ROLE_USER" />
 		<logout logout-url="/j_spring_security_logout" />
 	</http>
