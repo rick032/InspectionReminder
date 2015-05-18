@@ -6,7 +6,7 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring/root-context.xml</param-value>
+		<param-value>classpath:spring/applicationContext.xml</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -30,13 +30,13 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<!-- Loads Spring Security config file -->
+	<!-- Loads Spring Security config file 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			classpath:spring/spring-security.xml
 		</param-value>
-	</context-param>
+	</context-param>-->
  
 	<!-- Spring Security -->
 	<filter>
@@ -84,4 +84,12 @@
 	  <filter-name>set log4j MDC for log2userId</filter-name>
 	  <url-pattern>/*</url-pattern>
   	</filter-mapping>    
+  	
+  	<!-- resource -->
+	<resource-ref>
+		<description>cap datasource</description>
+		<res-ref-name>jdbc/irdb</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
 </web-app>
