@@ -1,0 +1,13 @@
+<Configure class="org.mortbay.jetty.webapp.WebAppContext">
+	<New id="irdb" class="org.mortbay.jetty.plus.naming.Resource">
+		<Arg>jdbc/irdb</Arg>
+		<Arg>
+			<New class="com.mchange.v2.c3p0.ComboPooledDataSource">
+				<Set name="driverClass">com.mysql.jdbc.Driver</Set>
+				<Set name="jdbcUrl"><![CDATA[jdbc:mysql://127.0.0.1:3306/irdb?useUnicode=true&characterEncoding=utf8]]></Set>
+				<Set name="user">root</Set>
+				<Set name="password">rick0223</Set>
+			</New>
+		</Arg>
+	</New>
+</Configure>

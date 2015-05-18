@@ -9,8 +9,13 @@
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
+	
+	<!-- @Controller -->
+	<context:component-scan base-package="com.oil.ir.controller" />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
@@ -20,9 +25,5 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
-	<context:component-scan base-package="com.oil.ir" />
-	
-	
 	
 </beans:beans>
